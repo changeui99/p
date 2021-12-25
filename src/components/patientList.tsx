@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules/rootReducer';
 import { setDeath, setEthnicity, setGender, setMin, setMax, setOpenPage, setRace } from '../modules/filter_reducer';
 import Check from "./check";
-import AgeFilter from "./AgeFilter";
+import AgeFilter from "./ageFilter";
 import PatientDetail from "./patientDetail";
 
 function PatientList(props: ApiProps) {
