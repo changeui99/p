@@ -30,7 +30,7 @@ function AgeFilter(props: AgeProps) {
     }
 
     return (
-        <div className="check_container" onClick={(event) => {
+        <div className={getString() === ""? "check_container":"check_container check_container_checked"} onClick={(event) => {
             getList()
             event.stopPropagation()
         }}>

@@ -23,7 +23,7 @@ function Check(props: CheckProps) {
     }
 
     return (
-        <div className="check_container" onClick={(event) => {
+        <div className={props.value === "" ? "check_container":"check_container check_container_checked"} onClick={(event) => {
             getList()
             event.stopPropagation()
         }}>
