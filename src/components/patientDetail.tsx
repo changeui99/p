@@ -51,10 +51,10 @@ function PatientDetail(props: PatientDetaildata) {
                 </div>
             </div>
             <div className={props.id === props.patient.personID ? "p_detail_container" : "p_detail_container_hidden"}>
-                <p className='p_detail_title'>진단 정보 :</p>
-                <p className='p_detail_content'>{conditions}</p>
                 <p className='p_detail_title'>전체 방문 수 :</p>
                 <p className='p_detail_content'>{visitCount}</p>
+                <p className='p_detail_title'>진단 정보 :</p>
+                <p className='p_detail_content'>{conditions}</p>
             </div>
         </div>
 

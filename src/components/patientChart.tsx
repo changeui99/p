@@ -10,6 +10,7 @@ import { PatientStats } from '../data/models'
 function PatientChart(props: ApiProps) {
     var chart_width = 300
     var chart_height = 250
+    var chart_title_font_size = 16
 
     const f_gender = useSelector((state: RootState) => state.filter.gender)
     const f_race = useSelector((state: RootState) => state.filter.race)
@@ -103,6 +104,9 @@ function PatientChart(props: ApiProps) {
                 data={pie1}
                 options={{
                     title: '성별 환자 수',
+                    titleTextStyle: {
+                        fontSize: chart_title_font_size
+                    }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
@@ -115,6 +119,9 @@ function PatientChart(props: ApiProps) {
                 data={pie2}
                 options={{
                     title: '인종별 환자 수',
+                    titleTextStyle: {
+                        fontSize: chart_title_font_size
+                    }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
@@ -127,6 +134,9 @@ function PatientChart(props: ApiProps) {
                 data={pie3}
                 options={{
                     title: '민족별 환자 수',
+                    titleTextStyle: {
+                        fontSize: chart_title_font_size
+                    }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
@@ -139,6 +149,9 @@ function PatientChart(props: ApiProps) {
                 data={pie4}
                 options={{
                     title: '(성별 + 인종)별 환자 수',
+                    titleTextStyle: {
+                        fontSize: chart_title_font_size
+                    }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
@@ -151,6 +164,9 @@ function PatientChart(props: ApiProps) {
                 data={pie5}
                 options={{
                     title: '(성별 + 민족)별 환자 수',
+                    titleTextStyle: {
+                        fontSize: chart_title_font_size
+                    }
                 }}
                 rootProps={{ 'data-testid': '1' }}
             />
