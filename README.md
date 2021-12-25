@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# 가이드 문서
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+해당 프로젝트 실행 가이드 문서입니다.
 
-## Available Scripts
+1. git clone 으로 프로젝트를 로컬로 이동시켜주세요.
+2. npm install 을 통해 필요한 모듈을 설치해주세요.
+3. /src/App.tsx 에서 api url을 지정해주어야 합니다.
 
-In the project directory, you can run:
+ example)
+ ### `const api = "http://1.1.1.1:3000" //enter the api`
 
-### `npm start`
+4. 터미널에서 해당 폴더로 이동 후 
+ ### `npm start`
+ 명령어 이후 [http://localhost:3000](http://localhost:3000) 에서 확인하실 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 구현 내용 설명서
 
-### `npm run build`
+데이터가 주어졌을 때의 구현 내용 설명서 입니다.
+먼저 데이터를 분류하고 분석하기위해 페이징이 가능한 표와 원 그래프를 사용했으며, 사용자들에게 익숙하고 사용하기 편리한 분석 툴을 제작하기 위해서 YoutubeStudio, Airbnb 등 몇몇의 서비스들을 참고하여 제작하였습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. 페이징이 가능한 표
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+페이징이 가능한 표는 다음과 같은 기능을 포함하고 있습니다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ - 데이터 세부 정보 확인 (데이터 row 클릭 시 상세 정보 확인 가능)
+ - 한 페이지당 행의 갯수 설정 및 페이징 기능
+ - 특정 컬럼을 클릭하여 내림차순, 오름차순으로 데이터 정렬 가능
+ - 몇몇의 데이터 값들을 기준으로 필터링 기능 ex) 성별, 나이 등등
 
-### `npm run eject`
+* Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+표에서는 `patientList`, `patientDetail`, `check`, `ageFilter`로 크게 4가지의 컴포넌트로 구성되어 있습니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ - `patientList`: 표의 전체적인 틀을 구성하는 부분.
+ - `patientDetail`: 데이터 row를 클릭 시 나타나는 상세 정보를 포함하는 부분.
+ - `check`: 필터 기능 중 하나로, 성별과 같이 class 를 구분하여 필터링을 설정하는 부분.
+ - `ageFilter`: 필터 기능 중 하나로, 나이와 같은 숫자에 대한 필터링을 설정하는 부분.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* State 관리
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+단순히 표 내부에서만 데이터가 관리되며 사용자의 인터렉션에 의해 표에만 영향을 주는 State는 전부 React의 `useState`를 사용하여 관리해주었습니다.
+반면에 표 뿐만 아니라 이후 이어지는 원 그래프에도 영향을 주게되는 필터링 관련된 값들은 `Redux`를 사용하여 관리해주었습니다.
 
-## Learn More
+2. 원 그래프
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+앞서 설명드린 표의 필터링 기능에 의해서 값이 변경되는 원 그래프는 `react-google-charts`를 활용하여 구현했습니다.
+Api를 통해서 얻은 데이터와 필터링 값을 기반으로 데이터를 분류하여 원 그래프에 표현됩니다.

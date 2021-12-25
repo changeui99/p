@@ -4,7 +4,7 @@ import PatientList from './components/patientList'
 import PatientChart from './components/patientChart'
 
 function App() {
-  const api = "" //enter the api
+  const api = "http://49.50.167.136:9871" //enter the api
 
   return (
     <div className="App">
